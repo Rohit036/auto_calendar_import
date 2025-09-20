@@ -44,3 +44,31 @@ li {
   background-color: #f2f2f2;
   margin-bottom: 5px;
 }
+
+#calendar-view {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+#events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.event {
+  background-color: #e0eaff;
+  border-left: 5px solid #4a90e2;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.event-title {
+  font-weight: bold;
+}
+
+.event-time {
+  font-size: 0.9em;
+  color: #555;
+}

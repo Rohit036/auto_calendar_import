@@ -1,3 +1,5 @@
+importScripts('config.js');
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'captureAndAnalyze') {
     captureAndAnalyzeTabs();
@@ -54,7 +56,7 @@ async function captureAndAnalyzeTabs() {
 
 async function analyzeScreenshot(base64Data) {
   // Replace 'YOUR_API_KEY' with your actual Gemini API key.
-  const apiKey = '';
+  const apiKey = GEMINI_API_KEY;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
   const body = {
@@ -88,8 +90,28 @@ async function analyzeScreenshot(base64Data) {
 
     const data = await response.json();
     console.log('Analysis from Gemini:', JSON.stringify(data, null, 2));
-    // You can process the response further here.
+    
+    // Process and store the events
+    processAndStoreEvents(data);
+
   } catch (error) {
     console.error('Error analyzing screenshot:', error);
+  }
+}
+
+function processAndStoreEvents(geminiResponse) {
+  try {
+    // Extract the JSON string from the response
+    const jsonString = geminiResponse.candidates[0].content.parts[0].text.replace(/```json\n|```/g, '');
+    const events = JSON.parse(jsonString);
+
+    if (Array.isArray(events)) {
+      // Store the events
+      chrome.storage.local.set({ calendarEvents: events }, () => {
+        console.log('Calendar events stored successfully.');
+      });
+    }
+  } catch (error) {
+    console.error('Error processing or storing events:', error);
   }
 }
