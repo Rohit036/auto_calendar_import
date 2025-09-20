@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlList = document.getElementById('url-list');
   const captureAndAnalyzeButton = document.getElementById('capture-and-analyze');
   const eventsContainer = document.getElementById('events-container');
+  const openCalendarPageButton = document.getElementById('open-calendar-page');
 
   // Load and display saved URLs
   chrome.storage.sync.get('calendarUrls', (data) => {
@@ -32,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   captureAndAnalyzeButton.addEventListener('click', () => {
     chrome.runtime.sendMessage({ action: 'captureAndAnalyze' });
+  });
+
+  openCalendarPageButton.addEventListener('click', () => {
+    chrome.tabs.create({ url: chrome.runtime.getURL('calendar.html') });
   });
 
   function addUrlToList(url) {

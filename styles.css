@@ -72,3 +72,18 @@ li {
   font-size: 0.9em;
   color: #555;
 }
+
+#open-calendar-page {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#open-calendar-page:hover {
+  background-color: #357abd;
+}
