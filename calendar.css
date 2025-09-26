@@ -12,7 +12,7 @@ h1 {
 
 #calendar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   margin-top: 30px;
 }
@@ -35,7 +35,7 @@ h1 {
 
 .timeline {
   position: relative;
-  padding-left: 20px;
+  padding-left: 50px; /* Increased padding for labels */
   border-left: 2px solid #e0eaff;
 }
 
@@ -47,10 +47,12 @@ h1 {
 
 .time-label {
   position: absolute;
-  left: -50px;
+  left: -55px; /* Adjusted position */
   top: -10px;
   font-size: 0.8em;
   color: #777;
+  width: 50px; /* Ensure label has width */
+  text-align: right;
 }
 
 .event {
@@ -59,11 +61,12 @@ h1 {
   padding: 5px 10px;
   border-radius: 4px;
   position: absolute;
-  width: calc(100% - 30px); /* Adjust width to fit within the timeline */
-  left: 20px;
+  width: calc(100% - 10px); /* Adjust width */
+  left: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .event-title {

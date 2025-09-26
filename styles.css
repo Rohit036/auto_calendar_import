@@ -40,13 +40,36 @@ ul {
 }
 
 li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px;
   background-color: #f2f2f2;
   margin-bottom: 5px;
 }
 
+.url-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
+.remove-url-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0 5px;
+}
+
+.remove-url-btn:hover {
+  color: #cc0000;
+}
+
 #calendar-view {
-  margin-top: 20px;
+  margin-top: 15px;
   border-top: 1px solid #ccc;
   padding-top: 10px;
 }
@@ -54,14 +77,30 @@ li {
 #events-container {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  max-height: 300px; /* Add scroll for long lists */
+  overflow-y: auto;
+}
+
+.day-group {
+  display: flex;
+  flex-direction: column;
   gap: 5px;
 }
 
+.day-header {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #4a90e2;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0eaff;
+}
+
 .event {
-  background-color: #e0eaff;
-  border-left: 5px solid #4a90e2;
-  padding: 10px;
+  background-color: #f0f4f8;
+  padding: 8px;
   border-radius: 4px;
+  border-left: 3px solid #4a90e2;
 }
 
 .event-title {

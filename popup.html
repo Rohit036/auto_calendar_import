@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Upcoming Events</title>
+  <title>Calendar Importer</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Auto-Snapshot Calendar Importer</h1>
+  <h1>Auto-Snapshot Importer</h1>
+  
+  <div id="calendar-view">
+    <h2>Upcoming Events</h2>
+    <div id="events-container"></div>
+  </div>
+
+  <div class="actions">
+    <button id="capture-and-analyze">Capture and Analyze</button>
+  </div>
+
   <div class="url-management">
     <h2>URL Management</h2>
     <input type="text" id="calendar-url" placeholder="Enter calendar URL">
     <button id="save-url">Save URL</button>
     <ul id="url-list"></ul>
   </div>
-  <div class="actions">
-    <button id="capture-and-analyze">Capture and Analyze</button>
-  </div>
-  <div id="calendar-view">
-    <h2>Upcoming Events</h2>
-    <button id="open-calendar-page">Open Full Calendar View</button>
-    <div id="events-container"></div>
-  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
